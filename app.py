@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from io import BytesIO
 
 st.title("XLSX to CSV Converter")
 
@@ -9,7 +8,7 @@ uploaded_file = st.file_uploader(
     type=["xlsx"]
 )
 
-if uploaded_file:
+if uploaded_file is not None:
     excel_file = pd.ExcelFile(uploaded_file)
 
     sheet = st.selectbox(
@@ -27,11 +26,12 @@ if uploaded_file:
 
     csv = df.to_csv(index=False)
 
-original_filename = uploaded_file.name.rsplit(".", 1)[0]
+    # Retain original filename
+    original_filename = uploaded_file.name.rsplit(".", 1)[0]
 
-st.download_button(
-    label="Download CSV",
-    data=csv,
-    file_name=f"{original_filename}.csv",
-    mime="text/csv"
-)
+    st.download_button(
+        label="Download CSV",
+        data=csv,
+        file_name=f"{original_filename}.csv",
+        mime="text/csv"
+    )
