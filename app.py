@@ -109,7 +109,7 @@ details{
 # ======================================================
 
 st.markdown(
-    '<div class="title">📄 ELDRIAN MANYAKOL</div>',
+    '<div class="title">📄 TP-ALB XLSX to CSV Converter</div>',
     unsafe_allow_html=True
 )
 
