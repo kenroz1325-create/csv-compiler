@@ -27,9 +27,11 @@ if uploaded_file:
 
     csv = df.to_csv(index=False)
 
-    st.download_button(
-        label="Download CSV",
-        data=csv,
-        file_name=f"{sheet}.csv",
-        mime="text/csv"
-    )
+original_filename = uploaded_file.name.rsplit(".", 1)[0]
+
+st.download_button(
+    label="Download CSV",
+    data=csv,
+    file_name=f"{original_filename}.csv",
+    mime="text/csv"
+)
