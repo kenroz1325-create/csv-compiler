@@ -160,9 +160,7 @@ if uploaded_files:
 
                 try:
 
-                    excel_file = pd.ExcelFile(
-                        uploaded_file
-                    )
+                    excel_file = pd.ExcelFile(uploaded_file)
 
                     st.info(
                         f"Sheets Found: {len(excel_file.sheet_names)}"
@@ -175,7 +173,7 @@ if uploaded_files:
                     for sheet in excel_file.sheet_names:
 
                         df = pd.read_excel(
-                            uploaded_file,
+                            excel_file,
                             sheet_name=sheet
                         )
 
